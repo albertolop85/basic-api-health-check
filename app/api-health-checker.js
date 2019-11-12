@@ -30,10 +30,10 @@ function validateEndpoint(url, status) {
     .then(function (response) {
 
       //console.log(response.data);
-      console.log(response.status);
-      console.log(response.statusText);
+      //console.log(response.status);
+      //console.log(response.statusText);
       //console.log(response.headers);
-      console.log(response.config);
+      //console.log(response.config);
 
       softAssertion.softAssert(response.status, status, 'Status code was not expected');
   });
