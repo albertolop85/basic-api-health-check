@@ -2,15 +2,18 @@
   "endpoints": [
     {
       "url": "https://gorest.co.in/public-api/users?_format=json&access-token=WDXWhLM2qj_RGltXvT_qwL-gYTmtrMLpBBBd",
-      "status": 200,
-      "method": "get",
-      "body": null
+      "status": 200
     },
     {
       "url": "https://www.google.com.mx",
-      "status": 200,
-      "method": "get",
-      "body": null
+      "status": 200
+    },
+    {
+      "url" : "https://www.httpwatch.com/httpgallery/authentication/authenticatedimage/default.aspx",
+      "status" : 200,
+      "headers" : {
+        "Authorization" : "Basic aHR0cHdhdGNoOmY="
+      }
     }
   ]
 }
