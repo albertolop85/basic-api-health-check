@@ -23,20 +23,20 @@ describe("API Health Checker", function() {
  */
 function validateEndpoints(endpoints) {
 
-    // Iterates over each endpoint and validate it individually
-    endpoints.forEach(endpoint => {
+  // Iterates over each endpoint and validate it individually
+  endpoints.forEach(endpoint => {
 
-      // Calls every validation test
-      it('Validating ' + endpoint.url + ' for status code ' + endpoint.status, function () {
-        validateEndpoint(endpoint);
-      });
+    // Calls every validation test
+    it('Validating ' + endpoint.url + ' for status code ' + endpoint.status, function (done) {
+      validateEndpoint(endpoint, done);
     });
+  });
 }
 
 /*
  * Validates endpoint status code is the expected one
  */
-async function validateEndpoint(endpoint) {
+async function validateEndpoint(endpoint, done) {
 
     // Setting headers and extra configuration
     let config = {};
@@ -45,14 +45,19 @@ async function validateEndpoint(endpoint) {
     try {
 
       // Executing a GET request
-      let response = await get(endpoint.url, config).catch((err)=>{console.log(err)});
+      const response = await get(endpoint.url, config);
 
       // Validating response status code
       assert.equal(endpoint.status, response.status, 'Unexpected status code ' + response.status +  ' for ' + endpoint.url + ', expected ' + endpoint.status);
+
+      done();
     }
-    catch (err) { console.error(err); }
+    catch (err) { done(err); }
 }
 
+/*
+ * Executes a GET request
+ */
 async function get(url, config) {
   let response = await axios.get(url, config);
   return response;
