@@ -37,7 +37,7 @@ function validateEndpoint(url, headers, status) {
   config.headers = headers;
 
   // Executing a GET request
-  axios.get(url, config)
+  await axios.get(url, config)
     .then(function (response) {
 
       console.log(response.data);
